@@ -1,6 +1,6 @@
+const Student = require('../models/students');
 const express = require('express');
 const routes = express.Router();
-const student =required
 
 
 // Get a list of students from the database
@@ -9,12 +9,11 @@ routes.get('/students', (req, res) => {
 });
 
 // Add a student to the database
-routes.post('/',async (req, res, next) => {
-    /*res.send({ type: 'Post Request' });*/
+routes.post('/addStudent',async (req, res, next) => {
     try{
-        const student = new student(req.body)
-        const result = await student .save();
-        res .send(result)
+        const student = new Student(req.body)
+        const result = await student.save();
+        res.send('student added successfully')
         }catch(error){
             console.log(error.message);
     }
