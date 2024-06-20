@@ -1,4 +1,4 @@
-const Student = require('../models/students');
+const StudentController = require('../controller/StudentController');
 const express = require('express');
 const routes = express.Router();
 
@@ -9,15 +9,7 @@ routes.get('/students', (req, res) => {
 });
 
 // Add a student to the database
-routes.post('/addStudent',async (req, res, next) => {
-    try{
-        const student = new Student(req.body)
-        const result = await student.save();
-        res.send('student added successfully')
-        }catch(error){
-            console.log(error.message);
-    }
-});
+routes.post('/addStudent',StudentController.addStudent);
 
 // Update a student in the database
 routes.put('/students/:id', (req, res) => {
